@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geoffrey Kamondo | Engineer & AI Specialist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-info a:hover {
+            opacity: 1;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Sections */
+        section {
+            padding: 70px 0;
+        }
+
+        section:nth-child(even) {
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 15px auto 0;
+        }
+
+        /* About */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        section:nth-child(even) .skill-card {
+            background: #f8f9fa;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card h3 i {
+            color: #667eea;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        section:nth-child(even) .project-card {
+            background: #f8f9fa;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px;
+            color: white;
+        }
+
+        .project-header i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-body p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: #e8f4f8;
+            color: #1a1a2e;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            padding-left: 60px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #667eea;
+        }
+
+        .timeline-item h3 {
+            color: #1a1a2e;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .company {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .edu-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+
+        section:nth-child(even) .edu-card {
+            background: #f8f9fa;
+        }
+
+        .edu-card h3 {
+            color: #1a1a2e;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .edu-card .school {
+            color: #667eea;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .edu-card .year {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Certifications */
+        .cert-list {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            gap: 15px;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        section:nth-child(even) .cert-item {
+            background: #f8f9fa;
+        }
+
+        .cert-item i {
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .cert-item span {
+            color: #333;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-title::after {
+            background: white;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn.primary {
+            background: white;
+            color: #1a1a2e;
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d1a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                padding-left: 45px;
+            }
+
+            .timeline-item::before {
+                left: 3px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Geoffrey Kamondo</h1>
+            <p class="tagline">Electrical & Software Engineer | AI/ML Specialist | Data Scientist</p>
+            <div class="contact-info">
+                <a href="mailto:jeffmwaura8@gmail.com"><i class="fas fa-envelope"></i>jeffmwaura8@gmail.com</a>
+                <a href="tel:+254711617828"><i class="fas fa-phone"></i>+254 711 617 828</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i>Nairobi, Kenya</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm a multidisciplinary engineer with over nine years of experience spanning electrical systems, software development, artificial intelligence, and data science. My career began in traditional electrical engineering—power distribution and industrial automation—but I've since expanded into the intersection of hardware and intelligent software systems.</p>
+                <p>Whether debugging a faulty PLC on a packaging line, building customer segmentation models in PySpark, or evaluating large language model outputs, I bring the same analytical rigor to every problem. My recent work focuses heavily on AI model evaluation and machine learning applications, giving me deep insight into both the capabilities and limitations of current AI technologies.</p>
+                <p>Beyond technical work, I've led teams of up to 60 people during national census operations, teaching me the value of clear communication, systematic planning, and building trust with diverse stakeholders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-bolt"></i> Electrical Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">PLC Programming</span>
+                        <span class="skill-tag">SCADA</span>
+                        <span class="skill-tag">PCB Design</span>
+                        <span class="skill-tag">Autodesk EAGLE</span>
+                        <span class="skill-tag">Power Systems</span>
+                        <span class="skill-tag">Industrial Automation</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-robot"></i> AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">RLHF</span>
+                        <span class="skill-tag">GenAI Evaluation</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-chart-line"></i> Data Science</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">pandas</span>
+                        <span class="skill-tag">numpy</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Google Cloud</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                        <span class="skill-tag">Jira</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Model Evaluation Framework</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Developed a 47-point evaluation framework for assessing generative AI outputs across accuracy, coherence, helpfulness, and safety dimensions. Adopted by a team of 12 evaluators, improving inter-rater reliability from 72% to 89%.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Quality Metrics</span>
+                            <span class="tech-tag">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-users"></i>
+                        <h3>Customer Segmentation System</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Built an unsupervised ML system processing 340,000 transactions for a retail company. Identified 7 distinct customer segments, resulting in 18% improvement in marketing campaign response rates.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PySpark</span>
+                            <span class="tech-tag">MLlib</span>
+                            <span class="tech-tag">K-means</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Predictive Maintenance Model</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Graduate thesis project using ML to predict industrial equipment failures. Achieved 87% accuracy in predicting failures within 72-hour windows using sensor data and maintenance records.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Gradient Boosting</span>
+                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Digital Census QA System</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Led quality assurance for Kenya's first fully digital census. Tested CAPI application across devices, identified 34 critical issues before deployment. System supported enumeration of 47+ million citizens.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">QA Testing</span>
+                            <span class="tech-tag">Mobile Systems</span>
+                            <span class="tech-tag">Documentation</span>
+                            <span class="tech-tag">Team Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>AI Research Specialist & ML Engineer</h3>
+                    <div class="company">Remote | Various AI Research Platforms</div>
+                    <div class="date">January 2024 – Present</div>
+                    <p>Evaluating generative AI systems for accuracy and quality. Completed 2,500+ evaluations, developed evaluation frameworks, and participated in RLHF processes for model training.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Data Analyst & Digital Content Strategist</h3>
+                    <div class="company">Freelance | Nairobi, Kenya</div>
+                    <div class="date">November 2019 – December 2023</div>
+                    <p>Executed 28 end-to-end data analysis projects. Built customer segmentation models, developed dashboards, and produced multimedia content for major clients including TikTok Kenya and GIZ.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>ICT Supervisor – Kenya Census 2019</h3>
+                    <div class="company">Kenya National Bureau of Statistics (KNBS)</div>
+                    <div class="date">August – October 2019</div>
+                    <p>Supervised 60+ team members for Kenya's first digital census. Achieved 98.7% completion rate, managed technical operations, and ensured data quality compliance.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Quality Assurance Engineer</h3>
+                    <div class="company">Kenya National Bureau of Statistics (KNBS)</div>
+                    <div class="date">June – August 2019</div>
+                    <p>Conducted comprehensive testing on census CAPI system. Documented 34 issues, developed testing protocols, and prepared technical reports for system deployment.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Electrical Engineering Intern</h3>
+                    <div class="company">Octrinsic Technologies & Kenya Power (KPLC)</div>
+                    <div class="date">2014</div>
+                    <p>Gained hands-on experience in PCB design, electrical systems maintenance, power distribution, and CAD software applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3>MSc. Software Engineering</h3>
+                    <div class="school">JKUAT, Kenya</div>
+                    <div class="year">2021 – 2024</div>
+                </div>
+                <div class="edu-card">
+                    <h3>BSc. Electrical & Electronic Engineering</h3>
+                    <div class="school">JKUAT, Kenya</div>
+                    <div class="year">2012 – 2016</div>
+                </div>
+                <div class="edu-card">
+                    <h3>Certified Public Accountant (CPA 1-4)</h3>
+                    <div class="school">Strathmore University</div>
+                    <div class="year">2011 – 2012</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Member, Engineers Board of Kenya (EBK) – 2020</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Data Science Certification – 2020</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Adobe Creative Suite Certification – 2020</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Python Programming Certification – 2020</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p>I'm open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="contact-buttons">
+                <a href="mailto:jeffmwaura8@gmail.com" class="contact-btn primary">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="tel:+254711617828" class="contact-btn secondary">
+                    <i class="fas fa-phone"></i> Call Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Geoffrey Kamondo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
